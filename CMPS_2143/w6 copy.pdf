@@ -1,0 +1,169 @@
+# Samuel Nuncio : 2143-OOP : W6
+## Q1
+| As Written | After Change Virtual |
+|:-----:|:-----:|
+|A car.|A car.|
+|A vehicle.|A car.|
+|A vehicle.|A car.|
+
+c.describe is decared as a Car so no pointer or reference is there and it already calls Car::descriibe().
+
+## Q2
+* declared
+* compile
+* actual
+* run
+* dynamic
+* pointer
+* reference
+* forms
+
+## Q3
+1. Compile time
+2. Compile time
+3. Compile time
+4. Run time
+5. Compile time
+6. Run time
+
+## Q4
+During compile it doesn't know which attack() to use because the actual type returned by makeCharacter() is not available until running. The C++ at runtime chooses the correct virtual attack() based on the actual object.
+
+## Q5
+|Result|Reason|
+|:---:|:---:|
+|OK|Exact match|
+|ERROR|Missing const|
+|ERROR|Double doesn't match int|
+|ERROR|Base rest() isn't virtual|
+|ERROR|Capital A means different name|
+|OK|Exact; override keyword is optional|
+
+## Q6
+This calls Character::printName()
+Wizard::printName() is a different function, not an override of the const virtual function.
+
+## Q7
+* The magnificent Merlin
+* The powerful Conan
+* Merlin
+* Conan
+* The powerful Conan
+
+## Q8
+Both copy into the base class
+change (Character c) -> (Character& c)
+
+## Q9
+|c->printName()|c->attack()|
+|:----:|:-----|
+|The powerful Conan|Conan Cleaves with an axe!|
+|The magnificent Merlin|Merlin swings wildly.|
+|Vex|Vex stabs from the shadows!|
+|Bob|Bob swings wildly.|
+
+
+## Q10
+class Bard : public Character
+
+* No.
+* That function won't correctly handle the new Bard type resulting in wrong behavior.
+  
+## Q11
+
+class Bard : public character {
+
+public:
+
+    Bard(string n) : Character(n) {}
+
+    void attack() override {
+        cout << name << " plays a very loud lute!" << endl;
+    }
+};
+
+* party.push_back(make_unique<Bard>("Jaskier"));
+
+## Q12
+1. "~Base"
+2. new int[100] since ~Derived() doesn't get called
+3. virtual ~Base() {cout << "~Base ";}
+4. ~Derived ~Base
+
+## Q13
+No problem
+
+## Q14
+If a class has virtual functions, give it a virtual destructor.
+
+## Q15
+* N
+* Y
+* Y
+* N
+* Y
+* Y
+* 
+* Blob does not implement area() const so it remains a pure virtual
+* double area() const override {}
+
+## Q16
+1. pure virtual
+2. interface
+
+## Q17
+class Rectangle : public Shape {
+
+private:
+
+    double width;
+    double height;
+public:
+
+    Rectangle(double w,double h) : Shape("rectangle"),width(w),height(h) {}
+
+    double area() const override { 
+        return width * height;
+    }
+};
+
+## Q18
+double totaArea(const vector<Shape*>& shapes) {
+
+    double total = 0;
+
+    for (Shape* s : shapes) {
+        total += s->area();
+    }
+
+    return total;
+};
+   returns: 9.14159
+
+## Case A
+... Animal::speak() is not virtual
+## Case B
+No, override
+## Case C
+* The code uses new allocations but never deletes leaving a memory leak.
+* Delete everything - 
+    for (auto : party)
+        delete c;
+* vector<unique_ptr\<Character>> party;
+## Case D
+No, the pointers declared type is Character* and Character does not have a castSpell() member.
+
+## Q19
+|printName|attack|
+|:---:|:---:|
+|Character::printName|Character::attack|
+|Warrior::printName|Warrior:attack|
+|Wizard::printName|Character::attack|
+|Character::printName|Rogue::attack|
+
+## Q20
+* F
+* T
+* F
+* F
+* T

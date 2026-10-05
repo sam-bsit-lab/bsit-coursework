@@ -77,17 +77,17 @@ Card Deck::deal(){
     return card;
 };
 
-bool Deck::empty() const{return deck.size() == 0;};
+bool Deck::empty() const{return deck.size() == 0;}
 
-int Deck::size() const{return deck.size();};
+int Deck::size() const{return deck.size();}
 
-void Hand::addCard(const Card& card) {hand.push_back(card);};
+void Hand::addCard(const Card& card) {hand.push_back(card);}
 
-void Hand::clear(){hand.clear();};
+void Hand::clear(){hand.clear();}
 
-int Hand::size() const{return hand.size();};
+int Hand::size() const{return hand.size();}
 
 void Hand::show() const{
     for (auto &c : hand) {
-    cout<<c.getRank()<<","<<c.getSuit()<<endl;};
+    cout<<c.getRank()<<","<<c.getSuit()<<endl;}
 };

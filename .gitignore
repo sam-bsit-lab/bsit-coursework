@@ -86,3 +86,4 @@ env/
 .env
 .env.*
 !.env.example
+/local-practice/
